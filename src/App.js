@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import "./App.css";
 import Modal from "./components/Modal/Modal";
@@ -18,9 +18,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
-
-        <Modal show={this.state.closed} closed={this.toggleModalHandler} />
-        <Backdrop show={this.state.closed} />
+        {!this.state.closed ? (
+          <Fragment>
+            <Modal show={this.state.closed} closed={this.toggleModalHandler} />
+            <Backdrop show={this.state.closed} />
+          </Fragment>
+        ) : null}
 
         <button className="Button" onClick={this.toggleModalHandler}>
           Open Modal
