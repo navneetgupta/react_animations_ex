@@ -7,7 +7,7 @@ import List from "./components/List/List";
 
 class App extends Component {
   state = {
-    closed: false
+    closed: true
   };
 
   toggleModalHandler = () => {
@@ -20,8 +20,8 @@ class App extends Component {
         <h1>React Animations</h1>
         {!this.state.closed ? (
           <Fragment>
-            <Modal show={this.state.closed} closed={this.toggleModalHandler} />
-            <Backdrop show={this.state.closed} />
+            <Modal show={!this.state.closed} closed={this.toggleModalHandler} />
+            <Backdrop show={!this.state.closed} />
           </Fragment>
         ) : null}
 
