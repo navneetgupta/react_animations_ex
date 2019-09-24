@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Transition from "react-transition-group/Transition";
 
 import "./App.css";
@@ -49,16 +49,8 @@ class App extends Component {
             ></div>
           )}
         </Transition>
-        <Transition
-          in={!this.state.closed}
-          timeout={300}
-          mountOnEnter={true}
-          unmountOnExit={true}
-        >
-          {state => <Modal show={state} closed={this.toggleModalHandler} />}
-        </Transition>
+        <Modal show={!this.state.closed} closed={this.toggleModalHandler} />
         {!this.state.closed ? <Backdrop show={!this.state.closed} /> : null}
-
         <button className="Button" onClick={this.toggleModalHandler}>
           Open Modal
         </button>
