@@ -29,16 +29,25 @@ class App extends Component {
           Toggle
         </button>
         <br />
-        <Transition in={this.state.showBlock} timeout={300}>
-          {/* 300 ms */}
-          <div
-            style={{
-              backgroundColor: "red",
-              width: 100,
-              height: 100,
-              margin: "auto"
-            }}
-          ></div>
+        {/* 300 ms */}
+        <Transition
+          in={this.state.showBlock}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+        >
+          {state => (
+            <div
+              style={{
+                backgroundColor: "red",
+                width: 100,
+                height: 100,
+                margin: "auto",
+                transition: "opacity 1s ease-out",
+                opacity: state === "exiting" ? 0 : 1
+              }}
+            ></div>
+          )}
         </Transition>
         {!this.state.closed ? (
           <Fragment>
